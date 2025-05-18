@@ -139,6 +139,7 @@ Node* DFS(Node* initial, int* cont) {
 
   return NULL;
 }
+/*
 
 int main( int argc, char *argv[] ){
 
@@ -150,4 +151,4 @@ int main( int argc, char *argv[] ){
   print_node(final);
 
   return 0;
-}
+} */

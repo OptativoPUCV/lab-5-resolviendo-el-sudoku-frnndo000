@@ -83,15 +83,60 @@ int is_valid(Node* n){
 
 List* get_adj_nodes(Node* n){
   List* list = createList();
+
+  for (int i = 0 ; i < 9 ; i++) {
+    for (int j = 0 ; j < 9 ; j++) {
+      if (n->sudo[i][j] == 0) {
+        for (int num = 1 ; num <= 9 ; num++) {
+          Node* new = copy(n);
+          new->sudo[i][j] = num;
+
+          if (is_valid(new)) {
+            pushBack(list, new); 
+          } else {
+            free(new);
+          }
+        }
+      return list; 
+      }
+    } 
+  }
   return list;
 }
 
 
 int is_final(Node* n){
-  return 0 ;
+  for (int i = 0; i < 9; i++)
+    for (int j = 0; j < 9; j++)
+      if (n->sudo[i][j] == 0)
+        return 0 ;
+  return 1 ;
 }
 
 Node* DFS(Node* initial, int* cont) {
+  Stack* stack = createStack() ;
+  push(stack, initial) ; 
+
+  while (!is_empty(stack)) {
+    Node* current = top(stack) ;
+    pop(stack) ;
+    (*cont)++ ;
+
+    if (is_final(current)) {
+        return current ;   
+    }
+
+    List* adj = get_adj_nodes(current);
+    Node* adjNode = first(adj) ;
+    while (adjNode) {
+        push(stack, adjNode) ;
+        adjNode = next(adj) ;
+    }
+
+    free(current) ;  
+    free(adj) ;  
+  }
+
   return NULL;
 }
 /*

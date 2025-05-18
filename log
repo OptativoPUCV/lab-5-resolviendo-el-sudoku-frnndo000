@@ -42,3 +42,24 @@ sudoku.c:139:5: note: previous definition of 'main' was here
      ^~~~
 cc1.exe: all warnings being treated as errors
 39d944b
+Sat, May 17, 2025 10:17:01 PM: 
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'is_valid':
+sudoku.c:47:13: error: unused variable 'k' [-Werror=unused-variable]
+   int i, j, k;
+             ^
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:94:11: error: implicit declaration of function 'addtolist' [-Werror=implicit-function-declaration]
+           addtolist(list, new) ;
+           ^~~~~~~~~
+test.c: At top level:
+test.c:245:5: error: redefinition of 'main'
+ int main( int argc, char *argv[] ) {
+     ^~~~
+In file included from test.c:5:0:
+sudoku.c:139:5: note: previous definition of 'main' was here
+ int main( int argc, char *argv[] ){
+     ^~~~
+cc1.exe: all warnings being treated as errors
+039bb11
